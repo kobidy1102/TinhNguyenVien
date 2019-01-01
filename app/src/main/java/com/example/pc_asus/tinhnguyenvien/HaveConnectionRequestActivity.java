@@ -68,7 +68,7 @@ public class HaveConnectionRequestActivity extends AppCompatActivity {
             //deprecated in API 26
             vibrator.vibrate(pattern, 0);
         }
-
+        setTitle("                        Trợ Giúp");
 
 
         checkStartCall=1;
