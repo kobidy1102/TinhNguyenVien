@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_matchparent"
+    tools:context=".VideoCallAndMapActivity">
+
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/ll_video_call"
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.example.pc_asus.tinhnguyenvien.VideoCallViewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_below="@+id/ll_video_call"-->
+        <!--android:orientation="vertical"-->
+        <!--android:id="@+id/ll_test"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="10dp"></LinearLayout>-->
+
+
+    <LinearLayout
+        android:id="@+id/ll_map"
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.example.pc_asus.tinhnguyenvien.MapViewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/ll_video_call2"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"></LinearLayout>
+
+        <LinearLayout
+            android:weightSum="100"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <View
+                android:layout_weight="89"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:layout_weight="11"
+                android:src="@mipmap/scroll"
+                android:id="@+id/img_scroll"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
