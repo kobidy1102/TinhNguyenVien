@@ -31,7 +31,7 @@ public class VideoCallViewFragment  extends Fragment{
     private DatabaseReference mDatabase;
     private FirebaseUser mCurrentUser;
         View view;
-
+String uid;
     String key="";
        // VideoCallActivity activity;
     private static final String LOG_TAG = VideoCallAndMapActivity.class.getSimpleName();
@@ -89,7 +89,7 @@ public class VideoCallViewFragment  extends Fragment{
 
 
             mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
-            final String uid= mCurrentUser.getUid();
+            uid= mCurrentUser.getUid();
             mDatabase= FirebaseDatabase.getInstance().getReference();
 
             ImageView imgEndCall= view.findViewById(R.id.img_endCall2);
@@ -177,6 +177,7 @@ public class VideoCallViewFragment  extends Fragment{
         leaveChannel();
         RtcEngine.destroy();
         mRtcEngine = null;
+        mDatabase.child("TinhNguyenVien").child("Status").child(uid).child("connectionRequest").setValue(0);
     }
     // Tutorial Step 6
     public void onEncCallClicked(View view) {

@@ -81,11 +81,8 @@ public class VideoCallAndMapActivity extends AppCompatActivity {
            }
        });
 
-
-
-
-
     }
+
 
 
     void checkDisConnect(){
