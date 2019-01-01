@@ -49,7 +49,6 @@ public class CheckConnectionService extends Service implements SensorEventListen
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
         Log.e("abc","start service...");
         mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
          uid= mCurrentUser.getUid();
@@ -58,7 +57,6 @@ public class CheckConnectionService extends Service implements SensorEventListen
             @SuppressLint("MissingPermission")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 keyRoomVideoChat=dataSnapshot.getValue().toString();
                 if(keyRoomVideoChat.equalsIgnoreCase("0")==false && keyRoomVideoChat.equalsIgnoreCase("1")==false ){    // khac 0
                     Toast.makeText(CheckConnectionService.this, "-"+dataSnapshot.getValue().toString()+"-", Toast.LENGTH_SHORT).show();                    //tới đây rồi,, giờ ,,, khi có yêu cầu thì làm cái như báo thức hỏi chấp nhận hoặc từ chối
@@ -66,7 +64,6 @@ public class CheckConnectionService extends Service implements SensorEventListen
                    // if(keyRoomVideoChat.isEmpty()){ //#0 và #1 rồi
                         mDatabase.child("checkStatusDevice").setValue(1);
                 //    }
-
 
                     Intent intent1 = new Intent(CheckConnectionService.this, HaveConnectionRequestActivity.class);
                     intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

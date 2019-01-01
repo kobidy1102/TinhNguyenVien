@@ -1,5 +1,6 @@
 package com.example.pc_asus.tinhnguyenvien;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -141,7 +142,7 @@ public class HaveConnectionRequestActivity extends AppCompatActivity {
         });
 
 
-        //20s mà ko nhấc máy thì hủy
+        //15s mà ko nhấc máy thì hủy
 
         Log.e("abc","checkstartcall-1 "+checkStartCall);
         final Handler handler = new Handler();
@@ -151,7 +152,7 @@ public class HaveConnectionRequestActivity extends AppCompatActivity {
                 Log.e("abc","checkstartcall-2 "+checkStartCall);
 
                 if(checkStartCall==1){
-                    Toast.makeText(HaveConnectionRequestActivity.this, "20s", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HaveConnectionRequestActivity.this, "15s", Toast.LENGTH_SHORT).show();
                     Log.e("abc","20s set bận");
 
 
@@ -161,7 +162,10 @@ public class HaveConnectionRequestActivity extends AppCompatActivity {
                     finish();
                 }
                 }
-        }, 20000);
+        }, 15000);
+
+
+        checkDisConnect();
 
 
     }
@@ -176,5 +180,34 @@ public class HaveConnectionRequestActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         vibrator.cancel();
+    }
+
+
+    void checkDisConnect(){
+        //new add
+        final DatabaseReference mDatabase;
+        FirebaseUser mCurrentUser;
+        mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
+        String uid= mCurrentUser.getUid();
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("TinhNguyenVien").child("Status").child(uid);
+        mDatabase.child("connectionRequest").addValueEventListener(new ValueEventListener() {
+            @SuppressLint("MissingPermission")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String keyRoomVideoChat=dataSnapshot.getValue().toString();
+                if(keyRoomVideoChat.equalsIgnoreCase("0")==true){    // khac 0
+                    Toast.makeText(HaveConnectionRequestActivity.this, "Đã ngắt kết nối", Toast.LENGTH_SHORT).show();
+                    finish();
+                    return;
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

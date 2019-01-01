@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.AttributeSet;
@@ -19,6 +20,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class VideoCallAndMapActivity extends AppCompatActivity {
     public static String key;
@@ -43,7 +53,7 @@ public class VideoCallAndMapActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_video_call_and_map);
 
-
+        checkDisConnect();
 
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|
@@ -78,5 +88,30 @@ public class VideoCallAndMapActivity extends AppCompatActivity {
     }
 
 
+    void checkDisConnect(){
+        //new add
+        final DatabaseReference mDatabase;
+        FirebaseUser mCurrentUser;
+        mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
+        String uid= mCurrentUser.getUid();
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("TinhNguyenVien").child("Status").child(uid);
+        mDatabase.child("connectionRequest").addValueEventListener(new ValueEventListener() {
+            @SuppressLint("MissingPermission")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String keyRoomVideoChat=dataSnapshot.getValue().toString();
+                if(keyRoomVideoChat.equalsIgnoreCase("0")==true){    // khac 0
+                    Toast.makeText(VideoCallAndMapActivity.this, "Đã ngắt kết nối.", Toast.LENGTH_SHORT).show();
+                    finish();
+                    return;
 
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
