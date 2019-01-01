@@ -48,7 +48,7 @@ import java.util.Calendar;
 public class AccountSettingsActivity extends AppCompatActivity {
 
     EditText edt_name, edt_phoneNumber;
-    Button btn_choose, btn_camera,btn_save, btn_cancel;
+    Button btn_choose, btn_camera,btn_save;
     TextView tv_resetPassword,tv_email;
     ImageView img_avatar;
     private DatabaseReference mDatabase;
@@ -63,13 +63,14 @@ public class AccountSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_settings);
 
+        setTitle("               Thông Tin Tài Khoản");
         edt_name=findViewById(R.id.edt_as_name);
         tv_email= findViewById(R.id.tv_as_email);
         edt_phoneNumber= findViewById(R.id.edt_as_phoneNumber);
         btn_choose=findViewById(R.id.btn_as_choose);
         btn_camera= findViewById(R.id.btn_as_camera);
         btn_save= findViewById(R.id.btn_as_save);
-        btn_cancel= findViewById(R.id.btn_as_cancel);
+    //    btn_cancel= findViewById(R.id.btn_as_cancel);
         tv_resetPassword= findViewById(R.id.tv_resetPassword);
         img_avatar= findViewById(R.id.img_avatar);
 
@@ -111,12 +112,12 @@ public class AccountSettingsActivity extends AppCompatActivity {
         });
 
 
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        btn_cancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
 
 
         btn_save.setOnClickListener(new View.OnClickListener() {

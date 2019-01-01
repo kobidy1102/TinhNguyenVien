@@ -198,9 +198,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -215,8 +215,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(MainActivity.this,AccountSettingsActivity.class));
          //    Toast.makeText(this, "settings", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.nav_friends) {
-            Toast.makeText(this, "friends", Toast.LENGTH_SHORT).show();
+//        } else if (id == R.id.nav_friends) {
+//            Toast.makeText(this, "friends", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_sign_out) {
             FirebaseAuth.getInstance().signOut();

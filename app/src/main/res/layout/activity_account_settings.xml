@@ -1,174 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="5dp"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:orientation="vertical"
+    android:weightSum="95"
     tools:context=".AccountSettingsActivity">
-
-    <EditText
-        android:id="@+id/edt_as_name"
-        android:layout_width="232dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="textPersonName"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_as_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/tv_as_email"
-        android:layout_width="226dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/tv_as_name"
-        app:layout_constraintTop_toBottomOf="@+id/edt_as_name" />
-
-    <EditText
-        android:id="@+id/edt_as_phoneNumber"
-        android:layout_width="227dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="textPersonName"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_as_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_as_email" />
-
-    <TextView
-        android:id="@+id/tv_as_photoUrl"
-        android:layout_width="111dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:gravity="left|center"
-        android:text="Ảnh đại diện:"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_as_phoneNumber" />
-
-    <TextView
-        android:id="@+id/tv_as_phoneNumber"
-        android:layout_width="110dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:gravity="left|center"
-        android:text="Số điện thoại:"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_as_email" />
-
-    <TextView
-        android:id="@+id/tv_as_email"
-        android:layout_width="86dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:gravity="left|center"
-        android:text="Email:"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_as_name" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="0dp"
+        android:layout_weight="15"
         android:gravity="center"
         android:text="Thông Tin Tài Khoản"
         android:textColor="@android:color/holo_orange_dark"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+        <TextView
+            android:id="@+id/tv_as_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:text="Họ Tên:"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="18sp"
+            android:layout_weight="40" />
+        <EditText
+            android:id="@+id/edt_as_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:text="Email: "
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="18sp"
+            android:layout_weight="40" />
+        <TextView
+            android:id="@+id/tv_as_email"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:text="Số điện thoại: "
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="18sp"
+            android:layout_weight="40" />
+        <EditText
+            android:id="@+id/edt_as_phoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
 
     <TextView
-        android:id="@+id/tv_as_name"
-        android:layout_width="86dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:gravity="left|center"
-        android:text="Họ Tên:"
+        android:text="Ảnh đại diện: "
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:layout_weight="8" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/img_avatar"
-        android:layout_width="222dp"
-        android:layout_height="135dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_as_phoneNumber"
-        app:srcCompat="@mipmap/user" />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:src="@mipmap/user" />
 
-    <Button
-        android:id="@+id/btn_as_save"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
-        android:text="Cập Nhật"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_avatar" />
-
-    <Button
-        android:id="@+id/btn_as_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="16dp"
-        android:text="Hủy"
-        app:layout_constraintStart_toEndOf="@+id/btn_as_save"
-        app:layout_constraintTop_toBottomOf="@+id/img_avatar" />
-
-    <Button
-        android:id="@+id/btn_as_choose"
-        android:layout_width="79dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
-        android:text="Chọn ảnh"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/img_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/edt_as_phoneNumber" />
-
-    <Button
-        android:id="@+id/btn_as_camera"
-        android:layout_width="77dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="camera"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/img_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/btn_as_choose" />
-
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+        <Button
+            android:id="@+id/btn_as_choose"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Album"
+            android:theme="@style/ButtonOrange"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:layout_weight="50" />
+        <Button
+            android:id="@+id/btn_as_camera"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:text="Camera"
+            android:theme="@style/ButtonOrange"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:textSize="12sp" />
+    </LinearLayout>
     <TextView
-        android:id="@+id/tv_resetPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_marginStart="268dp"
-        android:layout_marginTop="20dp"
-        android:text="Đổi mật khẩu"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textStyle="bold|italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_as_cancel" />
+    android:id="@+id/tv_resetPassword"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+        android:layout_weight="5"
+        android:textSize="12dp"
+    android:text="Đổi mật khẩu"
+        android:layout_marginRight="10dp"
+        android:gravity="right|center"
+    android:textColor="@android:color/holo_blue_dark"
+    android:textStyle="bold|italic" />
+    <Button
 
-</android.support.constraint.ConstraintLayout>
+        android:id="@+id/btn_as_save"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="Lưu"
+        android:theme="@style/ButtonOrange"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:layout_weight="10" />
+  -->
+
+</LinearLayout>

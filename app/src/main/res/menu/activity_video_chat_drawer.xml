@@ -9,10 +9,10 @@
             android:id="@+id/nav_accountSetting"
             android:icon="@drawable/ic_account_setting"
             android:title="Tài Khoản" />
-        <item
-            android:id="@+id/nav_friends"
-            android:icon="@drawable/ic_friends"
-            android:title="Bạn Bè" />
+        <!--<item-->
+            <!--android:id="@+id/nav_friends"-->
+            <!--android:icon="@drawable/ic_friends"-->
+            <!--android:title="Bạn Bè" />-->
 
     </group >
             <item
