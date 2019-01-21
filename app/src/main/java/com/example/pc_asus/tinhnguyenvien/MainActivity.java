@@ -1,11 +1,14 @@
 package com.example.pc_asus.tinhnguyenvien;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -35,6 +38,23 @@ public class MainActivity extends AppCompatActivity
     private FirebaseUser mCurrentUser;
     Handler mHandler;
     String uid;
+    int PERMISSION_ALL = 1;
+    String[] PERMISSIONS = {
+            android.Manifest.permission.RECEIVE_BOOT_COMPLETED,
+    android.Manifest.permission.ACCESS_COARSE_LOCATION,
+    android.Manifest.permission.ACCESS_FINE_LOCATION,
+    android.Manifest.permission.DISABLE_KEYGUARD,
+    android.Manifest.permission.INTERNET,
+    android.Manifest.permission.RECORD_AUDIO,
+    android.Manifest.permission.MODIFY_AUDIO_SETTINGS,
+    android.Manifest.permission.ACCESS_NETWORK_STATE,
+    android.Manifest.permission.CAMERA,
+    android.Manifest.permission.BLUETOOTH,
+    android.Manifest.permission.GET_ACCOUNTS,
+    android.Manifest.permission.READ_CONTACTS,
+    android.Manifest.permission.VIBRATE,
+    android.Manifest.permission.WAKE_LOCK,
+    };
 
 
     @Override
@@ -74,7 +94,9 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, SignInActivity.class);
             startActivity(intent);
         } else {
-
+            if(!hasPermissions(this, PERMISSIONS)){
+                ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
+            }
             uid = mCurrentUser.getUid();
                 mDatabase = FirebaseDatabase.getInstance().getReference().child("TinhNguyenVien");
 
@@ -203,6 +225,18 @@ public class MainActivity extends AppCompatActivity
 //        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
