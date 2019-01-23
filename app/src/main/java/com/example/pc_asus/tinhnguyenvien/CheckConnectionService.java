@@ -63,6 +63,7 @@ public class CheckConnectionService extends Service implements SensorEventListen
 
                    // if(keyRoomVideoChat.isEmpty()){ //#0 và #1 rồi
                         mDatabase.child("checkStatusDevice").setValue(1);
+                    Toast.makeText(CheckConnectionService.this, "1", Toast.LENGTH_SHORT).show();
                 //    }
 
                     Intent intent1 = new Intent(CheckConnectionService.this, HaveConnectionRequestActivity.class);

@@ -38,7 +38,7 @@ public class HaveConnectionRequestActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private Vibrator vibrator;
     String uid;
-    private int checkStartCall=0;
+    public static int checkStartCall=0;
      String sttFriends,sttAll;
     // String getKey;
      String key="";
@@ -55,7 +55,7 @@ public class HaveConnectionRequestActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
         mediaPlayer= MediaPlayer.create(this,R.raw.ringtone);
-        mediaPlayer.start();
+    //    mediaPlayer.start();
 
         //rung 0-> vô thời hạn, rung 0,4s nghĩ 1s .
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -115,7 +115,7 @@ public class HaveConnectionRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkStartCall=3;
-
+                mDatabase.child("TinhNguyenVien").child("Status").child(uid).child("checkStatusDevice").setValue(0);
                 mDatabase.child("TinhNguyenVien").child("Status").child(uid).child("connectionRequest").setValue(1);
                 mediaPlayer.stop();
                 vibrator.cancel();
@@ -170,11 +170,12 @@ public class HaveConnectionRequestActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mDatabase.child("TinhNguyenVien").child("Status").child(uid).child("checkStatusDevice").setValue(0);
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        mDatabase.child("TinhNguyenVien").child("Status").child(uid).child("checkStatusDevice").setValue(0);
+//        Toast.makeText(this, "11", Toast.LENGTH_SHORT).show();
+//    }
 
     @Override
     protected void onDestroy() {

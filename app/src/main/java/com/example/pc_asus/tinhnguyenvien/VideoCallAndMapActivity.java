@@ -111,4 +111,16 @@ public class VideoCallAndMapActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+         DatabaseReference mDatabase;
+         FirebaseUser mCurrentUser;
+        mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
+        String uid= mCurrentUser.getUid();
+        mDatabase= FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("TinhNguyenVien").child("Status").child(uid).child("checkStatusDevice").setValue(0);
+        Toast.makeText(this, "11", Toast.LENGTH_SHORT).show();
+    }
 }
